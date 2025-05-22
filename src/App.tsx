@@ -24,7 +24,7 @@ function App() {
     if (!isStopped) {
       intervalId = setInterval(() => {
         setGameState((prevState) => advanceGeneration(prevState));
-      }, 50);
+      }, 33);
     }
 
     return () => {
@@ -88,14 +88,14 @@ function App() {
 
   return (
     <div className="flex flex-col h-fit gap-8 justify-center items-center">
-      <div className="flex gap-4">
+      <div className="flex flex-col lg:flex-row gap-4">
         <button type="button" onClick={handleStartStop}>
           {isStopped ? "Start" : "Stop"}
         </button>
         <button type="button" onClick={() => resetGame()}>
           Reset Game
         </button>
-        <label className="flex gap-2 items-center " htmlFor="height">
+        <label className="flex flex-col gap-2 items-center " htmlFor="height">
           Height: {boardSize[0]}
           <input
             disabled={!isStopped}
@@ -110,7 +110,7 @@ function App() {
             onChange={changeHeight}
           />
         </label>
-        <label className="flex gap-2 items-center " htmlFor="width">
+        <label className="flex gap-2 flex-col items-center " htmlFor="width">
           Width: {boardSize[1]}
           <input
             disabled={!isStopped}
