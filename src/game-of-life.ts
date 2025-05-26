@@ -1,9 +1,10 @@
 import type { TGameState, TCell } from "./types";
 
+/* Initialize a game board with height, width, and an empty board*/
 export function initGame(
   height: number,
   width: number,
-  board: Array<Array<TCell>>,
+  board: Array<Array<TCell>> = createEmptyCells(height, width),
 ) {
   return {
     height,
@@ -63,6 +64,9 @@ function processCell(game: TGameState, x: number, y: number): TCell {
   }
 }
 
+/*
+Creates an empty gameboard.
+*/
 function createEmptyCells(height: number, width: number): TCell[][] {
   const cells: TCell[][] = [[]];
 
@@ -78,6 +82,7 @@ function createEmptyCells(height: number, width: number): TCell[][] {
   return cells;
 }
 
+// Fills an empty gameboard with random cells. Takes float probability between 0 and 1.
 function fillRandomCells(cells: TCell[][], probability: number): TCell[][] {
   const newCells = [...cells];
 
@@ -90,6 +95,7 @@ function fillRandomCells(cells: TCell[][], probability: number): TCell[][] {
   return newCells;
 }
 
+// Composes a new gameboard with random cells. Takes float probability between 0 and 1.
 export function createNewRandomCells(
   height: number,
   width: number,
